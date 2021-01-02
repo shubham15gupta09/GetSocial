@@ -24,8 +24,6 @@ const Welcome = (props) => {
           Register
         </button>
       </p>
-      <p>Build Date : <b>Jan 2, 21 10.45 am</b></p>
-      <p>Version : <b>0.2</b></p>
     </div>
   );
 };
