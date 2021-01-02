@@ -1,0 +1,73 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    align-items: center;
+}
+
+input, textarea {
+    background-color: white;
+    border-radius: 50px;
+    outline: none;
+    border-radius: 50px;
+    border: 2px solid red;
+}
+
+textarea {
+    border-radius: 10px !important;
+}
+
+.post {
+    margin: 2px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 20px;
+    text-align: left !important;
+}
+
+.AllInvitation {
+    margin: 2px;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 20px;
+    text-align: left !important;
+}
+
+input:hover {
+    border: 2px solid rgb(35, 175, 35);
+}
+
+.button {
+    outline: none;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 50px;
+    border: 2px solid red;
+    text-align: center;
+    background-color: white;
+}
+
+.button:hover {
+    color: black;
+    border: 2px solid rgb(35, 175, 35);
+    background-color: rgb(235, 164, 164);
+    cursor: pointer;
+}
+
+.welcome {
+    color: red;
+    font-size: 40px;
+}
+
+.get-social {
+    color: red;
+    font-size: 30px;
+}
+
+.here {
+    color: rgb(221, 64, 64);
+}
+
+.option-timeline {
+    margin: 10px;
+    padding: 10px;
+}
