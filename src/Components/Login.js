@@ -17,8 +17,8 @@ function Login(props) {
     if (LoginData.username === "" || LoginData.password === "") {
       alert("Please fill all the fields");
     } else {
-      fetch("http://localhost:8080/verify-user", {
-        // fetch("https://get-social.azurewebsites.net/verify-user", {
+      // fetch("http://localhost:8080/verify-user", {
+      fetch("https://get-social.azurewebsites.net/verify-user", {
         method: "POST",
         body: JSON.stringify(LoginData),
         headers: { "Content-type": "application/json; charset=UTF-8" },
