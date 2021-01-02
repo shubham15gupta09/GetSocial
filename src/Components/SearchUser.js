@@ -11,7 +11,8 @@ function SearchUser(props) {
       username: props.username,
       to_username: result.data.username
     }
-    fetch("http://localhost:8080/send-invite", {
+    fetch("https://get-social.azurewebsites.net/send-invite", {
+      // fetch("http://localhost:8080/send-invite", {
       method: "POST",
       body: JSON.stringify(Data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -22,7 +23,8 @@ function SearchUser(props) {
     let username_search = {
       username: document.getElementById("username_search").value.trim()
     };
-    fetch("http://localhost:8080/get-user", {
+    fetch("https://get-social.azurewebsites.net/get-user", {
+      // fetch("http://localhost:8080/get-user", {
       method: "POST",
       body: JSON.stringify(username_search),
       headers: { "Content-type": "application/json; charset=UTF-8" },

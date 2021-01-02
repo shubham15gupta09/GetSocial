@@ -25,8 +25,8 @@ const Register = (props) => {
     ) {
       alert("Please fill all the fields");
     } else {
-      fetch("http://localhost:8080/add-user", {
-        // fetch("https://get-social.azurewebsites.net/add-user", {
+      // fetch("http://localhost:8080/add-user", {
+      fetch("https://get-social.azurewebsites.net/add-user", {
         method: "POST",
         body: JSON.stringify(RegisterData),
         headers: { "Content-type": "application/json; charset=UTF-8" },

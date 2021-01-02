@@ -21,8 +21,8 @@ const Timeline = (props) => {
   };
   const handleAllPost = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8080/get-all-post")
-      // fetch("https://get-social.azurewebsites.net/get-all-post")
+    // fetch("http://localhost:8080/get-all-post")
+    fetch("https://get-social.azurewebsites.net/get-all-post")
       .then((result) => result.json())
       .then((result) => {
         settimeline(
