@@ -13,18 +13,25 @@ const Allinvitation = () => {
     e.preventDefault();
     alert("Wait for functionality !!...");
   };
-  return i.map((i) => (
-    <div className="AllInvitation">
-      <p><b>Name</b> : {i.name}</p>
-      <p><b>Username</b> : @{i.username}</p>
-      <button className="button" onClick={(e) => handleAcceptinvitation(e)}>
-        Accept invitation
+  return (
+    <div>
+      <h3 className="here">All Invitation</h3>
+      {
+        i.map((i) => (
+          <div className="AllInvitation">
+            <p><b>Name</b> : {i.name}</p>
+            <p><b>Username</b> : @{i.username}</p>
+            <button className="button" onClick={(e) => handleAcceptinvitation(e)}>
+              Accept invitation
       </button>
-      <button className="button" onClick={(e) => handleRejectInvitation(e)}>
-        Reject invitation
+            <button className="button" onClick={(e) => handleRejectInvitation(e)}>
+              Reject invitation
       </button>
+          </div>
+        ))
+      }
     </div>
-  ));
+  );
 };
 
 export default Allinvitation;

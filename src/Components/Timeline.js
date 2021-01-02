@@ -21,8 +21,8 @@ const Timeline = (props) => {
   };
   const handleAllPost = (e) => {
     e.preventDefault();
-    // fetch("http://localhost:8080/get-all-post")
-    fetch("https://get-social.azurewebsites.net/get-all-post")
+    fetch("http://localhost:8080/get-all-post")
+      // fetch("https://get-social.azurewebsites.net/get-all-post")
       .then((result) => result.json())
       .then((result) => {
         settimeline(
@@ -30,7 +30,7 @@ const Timeline = (props) => {
             settimeline={settimeline}
             allpost={result.result.reverse()}
             username={props.username}
-            id={props._id}
+            id={props.id}
           />
         );
       });
@@ -38,19 +38,19 @@ const Timeline = (props) => {
   const handleSearchUser = (e) => {
     e.preventDefault();
     settimeline(
-      <SearchUser settimeline={settimeline} username={props.username} id={props._id} />
+      <SearchUser settimeline={settimeline} username={props.username} id={props.id} />
     );
   };
   const handleAllInvitation = (e) => {
     e.preventDefault();
     settimeline(
-      <AllInvitation settimeline={settimeline} username={props.username} id={props._id} />
+      <AllInvitation settimeline={settimeline} username={props.username} id={props.id} />
     );
   };
   const handleLogOut = () => {
     if (window.confirm("Are you sure ? ...")) {
       props.setinitial(
-        <Login setinitial={props.setinitial} username={props.username} id={props._id} />
+        <Login setinitial={props.setinitial} username={props.username} id={props.id} />
       );
     } else {
       settimeline("Your timeline");
