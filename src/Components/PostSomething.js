@@ -8,8 +8,6 @@ function PostSomething(props) {
       username: props.username,
       post: document.getElementById("post").value.trim(),
     };
-    console.log(Post);
-
     if (Post.post === "") {
       alert("Please write something");
     } else {
