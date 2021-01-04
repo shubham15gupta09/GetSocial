@@ -66,6 +66,7 @@ const Timeline = (props) => {
             username={props.username}
             id={props.id}
             data={result.data}
+            name={props.name}
           />
         );
       })

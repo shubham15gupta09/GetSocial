@@ -24,7 +24,7 @@ function PostSomething(props) {
           } else if (result.response === "failed") {
             alert(result.message);
           } else {
-            alert("Unknown error occured . Sorry:/")
+            alert("Unknown error occured . Sorry:/");
           }
         });
     }

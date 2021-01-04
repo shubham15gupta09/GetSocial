@@ -16,7 +16,7 @@ const Register = (props) => {
       email: document.getElementById("email").value.trim(),
       password: document.getElementById("password").value.trim(),
       invitation: [],
-      friends: []
+      friends: [],
     };
 
     if (

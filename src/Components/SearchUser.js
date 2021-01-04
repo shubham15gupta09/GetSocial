@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function SearchUser(props) {
-
   // initial state
   const [user, setuser] = useState(
     <p>
@@ -9,13 +8,13 @@ function SearchUser(props) {
     </p>
   );
 
-  // to handle the send invitation button to invite user 
+  // to handle the send invitation button to invite user
   const handleInvitation = (e, result) => {
     const Data = {
       id: props.id,
       username: props.username,
       to_username: result.data.username,
-      name: props.name
+      name: props.name,
     };
     fetch("https://thegetsocial.azurewebsites.net/send-invite", {
       // fetch("http://localhost:8080/send-invite", {
@@ -27,17 +26,19 @@ function SearchUser(props) {
       .then((result) => {
         if (result.response === "success") {
           alert("Invitation sent successfully");
-          setuser(<p>
-            <b>-- User will appear here --</b>
-          </p>)
+          setuser(
+            <p>
+              <b>-- User will appear here --</b>
+            </p>
+          );
         } else {
-          alert("error occured : " + result.message)
+          alert("error occured : " + result.message);
         }
       })
-      .catch((error) => alert("Some Error Occured : " + error))
+      .catch((error) => alert("Some Error Occured : " + error));
   };
 
-  // to handle the submit button to search user 
+  // to handle the submit button to search user
   const handleSubmit = (e) => {
     e.preventDefault();
     let username_search = {

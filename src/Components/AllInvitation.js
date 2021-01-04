@@ -1,31 +1,60 @@
 import React from "react";
 
 const Allinvitation = (props) => {
-  const handleAcceptinvitation = (e) => {
+  const handleAcceptinvitation = (e, d) => {
     e.preventDefault();
-    alert("Wait for functionality !!...");
+    const data = {
+      from_username: props.username,
+      from_id: props.id,
+      from_name: props.name,
+      name: d.name,
+      username: d.username,
+    };
+    fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
+      // fetch("http://localhost:8080/accept-invite", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => alert("Done"))
+      .catch((error) => console.log(error));
   };
-  const handleRejectInvitation = (e) => {
+  const handleRejectInvitation = (e, d) => {
     e.preventDefault();
+    const data = {
+      from_username: props.username,
+      from_id: props.id,
+      name: d.name,
+      username: d.username,
+    };
     alert("Wait for functionality !!...");
   };
   return (
     <div>
       <h3 className="here">All Invitation</h3>
-      {
-        props.data.map((i) => (
-          <div className="AllInvitation">
-            <p><b>Name</b> : @{i.name}</p>
-            <p><b>Username</b> : @{i.username}</p>
-            <button className="button" onClick={(e) => handleAcceptinvitation(e)}>
-              Accept invitation
-      </button>
-            <button className="button" onClick={(e) => handleRejectInvitation(e)}>
-              Reject invitation
-      </button>
-          </div>
-        ))
-      }
+      {props.data.map((i) => (
+        <div className="AllInvitation" key={i.username}>
+          <p>
+            <b>Name</b> : @{i.name}
+          </p>
+          <p>
+            <b>Username</b> : @{i.username}
+          </p>
+          <button
+            className="button"
+            onClick={(e) => handleAcceptinvitation(e, i)}
+          >
+            Accept invitation
+          </button>
+          <button
+            className="button"
+            onClick={(e) => handleRejectInvitation(e, i)}
+          >
+            Reject invitation
+          </button>
+        </div>
+      ))}
     </div>
   );
 };
