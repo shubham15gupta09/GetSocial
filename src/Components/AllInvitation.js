@@ -1,10 +1,6 @@
 import React from "react";
 
-const Allinvitation = () => {
-  const i = [
-    { name: "Sample Name 1", username: "Sample username 1" },
-    { name: "Sample Name 2", username: "Sample username 2" },
-  ];
+const Allinvitation = (props) => {
   const handleAcceptinvitation = (e) => {
     e.preventDefault();
     alert("Wait for functionality !!...");
@@ -17,9 +13,9 @@ const Allinvitation = () => {
     <div>
       <h3 className="here">All Invitation</h3>
       {
-        i.map((i) => (
+        props.data.map((i) => (
           <div className="AllInvitation">
-            <p><b>Name</b> : {i.name}</p>
+            <p><b>Name</b> : @{i.name}</p>
             <p><b>Username</b> : @{i.username}</p>
             <button className="button" onClick={(e) => handleAcceptinvitation(e)}>
               Accept invitation

@@ -15,6 +15,8 @@ const Register = (props) => {
       username: document.getElementById("username").value.trim(),
       email: document.getElementById("email").value.trim(),
       password: document.getElementById("password").value.trim(),
+      invitation: [],
+      friends: []
     };
 
     if (
@@ -25,8 +27,8 @@ const Register = (props) => {
     ) {
       alert("Please fill all the fields");
     } else {
-      // fetch("http://localhost:8080/add-user", {
-      fetch("https://thegetsocial.azurewebsites.net/add-user", {
+      fetch("http://localhost:8080/add-user", {
+        // fetch("https://thegetsocial.azurewebsites.net/add-user", {
         method: "POST",
         body: JSON.stringify(RegisterData),
         headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -40,6 +42,7 @@ const Register = (props) => {
                 setinitial={props.setinitial}
                 username={RegisterData.username}
                 id={result.userDetails._id}
+                name={result.userDetails.name}
               />
             );
           } else if (result.response === "failed") {

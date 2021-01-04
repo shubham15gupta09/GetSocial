@@ -2,56 +2,97 @@ import React, { useState } from "react";
 
 function SearchUser(props) {
 
-  const [user, setuser] = useState(<p><b>--{" "}User will appear here{" "}--</b></p>)
+  // initial state
+  const [user, setuser] = useState(
+    <p>
+      <b>-- User will appear here --</b>
+    </p>
+  );
 
+  // to handle the send invitation button to invite user 
   const handleInvitation = (e, result) => {
-    alert('feature will be released soon');
     const Data = {
       id: props.id,
       username: props.username,
-      to_username: result.data.username
-    }
-    fetch("https://thegetsocial.azurewebsites.net/send-invite", {
-      // fetch("http://localhost:8080/send-invite", {
+      to_username: result.data.username,
+      name: props.name
+    };
+    // fetch("https://thegetsocial.azurewebsites.net/send-invite", {
+    fetch("http://localhost:8080/send-invite", {
       method: "POST",
       body: JSON.stringify(Data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
-    });
-  }
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        if (result.response === "success") {
+          alert("Invitation sent successfully");
+          setuser(<p>
+            <b>-- User will appear here --</b>
+          </p>)
+        } else {
+          alert("error occured : " + result.message)
+        }
+      })
+      .catch((error) => alert("Some Error Occured : " + error))
+  };
+
+  // to handle the submit button to search user 
   const handleSubmit = (e) => {
     e.preventDefault();
     let username_search = {
-      username: document.getElementById("username_search").value.trim()
+      username: document.getElementById("username_search").value.trim(),
     };
-    fetch("https://thegetsocial.azurewebsites.net/get-user", {
-      // fetch("http://localhost:8080/get-user", {
+    // fetch("https://thegetsocial.azurewebsites.net/get-user", {
+    fetch("http://localhost:8080/get-user", {
       method: "POST",
       body: JSON.stringify(username_search),
       headers: { "Content-type": "application/json; charset=UTF-8" },
-    }).then(result => result.json())
-      .then(result => {
+    })
+      .then((result) => result.json())
+      .then((result) => {
         if (result.response === "success") {
-          setuser(<div className="post" key={result.data.username}>
-            <p>Name : <b>{result.data.name}</b></p>
-            <p>Username : <b>@{result.data.username}</b></p>
-            <button className="button" onClick={(e) => handleInvitation(e, result)}>Send invitation</button>
-          </div>)
+          setuser(
+            <div className="post" key={result.data.username}>
+              <p>
+                Name : <b>{result.data.name}</b>
+              </p>
+              <p>
+                Username : <b>@{result.data.username}</b>
+              </p>
+              <button
+                className="button"
+                onClick={(e) => handleInvitation(e, result)}
+              >
+                Send invitation
+              </button>
+            </div>
+          );
         } else {
-          setuser(<p><b>--{" "}User will appear here{" "}--</b></p>);
           alert(`No user found with username : @${username_search.username}`);
+          setuser(
+            <p>
+              <b>-- User will appear here --</b>
+            </p>
+          );
         }
-      })
+      });
   };
+
   return (
     <div>
       <h3 className="here">Search</h3>
-      <input type="text"
+      <input
+        type="text"
         placeholder="Write the username.."
         id="username_search"
-        name="username_search" />
-      <button className="button" onClick={(e) => handleSubmit(e)}>Search</button>
-      { user}
-    </div >
+        name="username_search"
+      />
+      <button className="button" onClick={(e) => handleSubmit(e)}>
+        Search
+      </button>
+      {user}
+    </div>
   );
 }
 
