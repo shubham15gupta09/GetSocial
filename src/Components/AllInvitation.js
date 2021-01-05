@@ -10,8 +10,8 @@ const Allinvitation = (props) => {
       name: d.name,
       username: d.username,
     };
-    // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
-    fetch("http://localhost:8080/accept-invite", {
+    fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
+      // fetch("http://localhost:8080/accept-invite", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
