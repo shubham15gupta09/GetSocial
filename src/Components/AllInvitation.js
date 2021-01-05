@@ -17,32 +17,33 @@ const Allinvitation = (props) => {
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((result) => result.json())
-      .then((result) => alert("Done"))
+      .then((result) => alert("Accepted the invitation"))
       .catch((error) => console.log(error));
   };
   const handleRejectInvitation = (e, d) => {
-    e.preventDefault();
-    const data = {
-      from_username: props.username,
-      from_id: props.id,
-      name: d.name,
-      username: d.username,
-    };
-    // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
-    fetch("http://localhost:8080/accept-invite", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-type": "application/json; charset=UTF-8" },
-    })
-      .then((result) => result.json())
-      .then((result) => {
-        if (result.response === "success") {
-          alert("Done : " + result.message);
-        } else {
-          alert("Error Occured :" + result.message);
-        }
-      })
-      .catch((error) => alert("Unexpected Error Occures"));
+    alert("feature is comming very soon");
+    // e.preventDefault();
+    // const data = {
+    //   from_username: props.username,
+    //   from_id: props.id,
+    //   name: d.name,
+    //   username: d.username,
+    // };
+    // // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
+    // fetch("http://localhost:8080/accept-invite", {
+    //   method: "POST",
+    //   body: JSON.stringify(data),
+    //   headers: { "Content-type": "application/json; charset=UTF-8" },
+    // })
+    //   .then((result) => result.json())
+    //   .then((result) => {
+    //     if (result.response === "success") {
+    //       alert("Done : " + result.message);
+    //     } else {
+    //       alert("Error Occured :" + result.message);
+    //     }
+    //   })
+    //   .catch((error) => alert("Unexpected Error Occures"));
   };
   return (
     <div>
