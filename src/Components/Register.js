@@ -50,7 +50,8 @@ const Register = (props) => {
             document.getElementById("username").value = "";
             document.getElementById("email").value = "";
           }
-        });
+        })
+        .catch((error) => alert("Error occured : " + error));
     }
   };
 

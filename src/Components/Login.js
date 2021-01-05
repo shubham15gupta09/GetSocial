@@ -44,7 +44,7 @@ function Login(props) {
             document.getElementById("password").value = "";
           }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => alert("Error occured : " + error));
     }
   };
   return (

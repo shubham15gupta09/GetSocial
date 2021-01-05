@@ -42,7 +42,7 @@ const Timeline = (props) => {
           />
         );
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert("Error occured : " + error));
   };
   const handleMyFriends = (e) => {
     e.preventDefault();
@@ -54,19 +54,26 @@ const Timeline = (props) => {
     })
       .then((result) => result.json())
       .then((result) => {
-        settimeline(
-          <GetAllFriends
-            settimeline={settimeline}
-            username={props.username}
-            name={props.name}
-            id={props.id}
-            data={result.data}
-          />
-        );
+        if (result.data.length === 0) {
+          settimeline(
+            <p>
+              <b>-- Your Friend List is Empty --</b>
+            </p>
+          );
+        } else {
+          settimeline(
+            <GetAllFriends
+              settimeline={settimeline}
+              username={props.username}
+              name={props.name}
+              id={props.id}
+              data={result.data}
+            />
+          );
+        }
       })
       .catch((error) => console.log(error));
   };
-
   const handleSearchUser = (e) => {
     e.preventDefault();
     settimeline(
@@ -89,17 +96,25 @@ const Timeline = (props) => {
     })
       .then((result) => result.json())
       .then((result) => {
-        settimeline(
-          <AllInvitation
-            settimeline={settimeline}
-            username={props.username}
-            id={props.id}
-            data={result.data}
-            name={props.name}
-          />
-        );
+        if (result.data.length === 0) {
+          settimeline(
+            <p>
+              <b>-- No Invitation Available --</b>
+            </p>
+          );
+        } else {
+          settimeline(
+            <AllInvitation
+              settimeline={settimeline}
+              username={props.username}
+              id={props.id}
+              data={result.data}
+              name={props.name}
+            />
+          );
+        }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert("Error occured : " + error));
   };
   const handleLogOut = () => {
     if (window.confirm("Are you sure ? ...")) {

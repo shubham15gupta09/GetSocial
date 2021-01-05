@@ -26,7 +26,8 @@ function PostSomething(props) {
           } else {
             alert("Unknown error occured . Sorry:/");
           }
-        });
+        })
+        .catch((error) => alert("Error occured : " + error));
     }
   };
   return (

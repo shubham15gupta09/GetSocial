@@ -18,32 +18,29 @@ const Allinvitation = (props) => {
     })
       .then((result) => result.json())
       .then((result) => alert("Accepted the invitation"))
-      .catch((error) => console.log(error));
+      .catch((error) => alert("Error occured : " + error));
   };
   const handleRejectInvitation = (e, d) => {
-    alert("feature is comming very soon");
-    // e.preventDefault();
-    // const data = {
-    //   from_username: props.username,
-    //   from_id: props.id,
-    //   name: d.name,
-    //   username: d.username,
-    // };
-    // // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
-    // fetch("http://localhost:8080/accept-invite", {
-    //   method: "POST",
-    //   body: JSON.stringify(data),
-    //   headers: { "Content-type": "application/json; charset=UTF-8" },
-    // })
-    //   .then((result) => result.json())
-    //   .then((result) => {
-    //     if (result.response === "success") {
-    //       alert("Done : " + result.message);
-    //     } else {
-    //       alert("Error Occured :" + result.message);
-    //     }
-    //   })
-    //   .catch((error) => alert("Unexpected Error Occures"));
+    const data = {
+      username: props.username,
+      id: props.id,
+      remove: {
+        username: d.username,
+        name: d.name,
+      },
+    };
+    console.log(data);
+    fetch("https://thegetsocial.azurewebsites.net/reject-invite", {
+      // fetch("http://localhost:8080/reject-invite", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        alert(result.message);
+      })
+      .catch((error) => alert("Error occured : " + error));
   };
   return (
     <div>
