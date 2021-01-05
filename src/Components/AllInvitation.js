@@ -10,8 +10,8 @@ const Allinvitation = (props) => {
       name: d.name,
       username: d.username,
     };
-    fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
-      // fetch("http://localhost:8080/accept-invite", {
+    // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
+    fetch("http://localhost:8080/accept-invite", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -28,7 +28,21 @@ const Allinvitation = (props) => {
       name: d.name,
       username: d.username,
     };
-    alert("Wait for functionality !!...");
+    // fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
+    fetch("http://localhost:8080/accept-invite", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        if (result.response === "success") {
+          alert("Done : " + result.message);
+        } else {
+          alert("Error Occured :" + result.message);
+        }
+      })
+      .catch((error) => alert("Unexpected Error Occures"));
   };
   return (
     <div>

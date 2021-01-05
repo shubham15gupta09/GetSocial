@@ -5,6 +5,7 @@ import SearchUser from "./SearchUser";
 import PostSomething from "./PostSomething";
 import AllInvitation from "./AllInvitation";
 import AllPost from "./AllPost";
+import GetAllFriends from "./GetAllFriends";
 
 const Timeline = (props) => {
   const [timeline, settimeline] = useState(
@@ -23,8 +24,12 @@ const Timeline = (props) => {
   };
   const handleAllPost = (e) => {
     e.preventDefault();
-    // fetch("http://localhost:8080/get-all-post")
-    fetch("https://thegetsocial.azurewebsites.net/get-all-post")
+    // fetch("https://thegetsocial.azurewebsites.net/get-all-post",{
+    fetch("http://localhost:8080/get-all-post", {
+      method: "POST",
+      body: JSON.stringify({ username: props.username, id: props.id }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
       .then((result) => result.json())
       .then((result) => {
         settimeline(
@@ -36,8 +41,32 @@ const Timeline = (props) => {
             id={props.id}
           />
         );
-      });
+      })
+      .catch((error) => console.log(error));
   };
+  const handleMyFriends = (e) => {
+    e.preventDefault();
+    // fetch("https://thegetsocial.azurewebsites.net/get-all-friends",{
+    fetch("http://localhost:8080/get-all-friends", {
+      method: "POST",
+      body: JSON.stringify({ username: props.username, id: props.id }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        settimeline(
+          <GetAllFriends
+            settimeline={settimeline}
+            username={props.username}
+            name={props.name}
+            id={props.id}
+            data={result.data}
+          />
+        );
+      })
+      .catch((error) => console.log(error));
+  };
+
   const handleSearchUser = (e) => {
     e.preventDefault();
     settimeline(
@@ -52,8 +81,8 @@ const Timeline = (props) => {
   const handleAllInvitation = (e) => {
     e.preventDefault();
     const data = { id: props.id, username: props.username };
-    fetch("https://thegetsocial.azurewebsites.net/get-all-invitation", {
-      // fetch("http://localhost:8080/get-all-invitation", {
+    // fetch("https://thegetsocial.azurewebsites.net/get-all-invitation", {
+    fetch("http://localhost:8080/get-all-invitation", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -98,6 +127,10 @@ const Timeline = (props) => {
         {"   "}
         <button className="button" onClick={(e) => handleAllPost(e)}>
           All Post
+        </button>
+        {"   "}
+        <button className="button" onClick={(e) => handleMyFriends(e)}>
+          My Friends
         </button>
         {"   "}
         <button className="button" onClick={(e) => handleSearchUser(e)}>
