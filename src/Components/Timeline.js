@@ -24,6 +24,12 @@ const Timeline = (props) => {
   };
   const handleAllPost = (e) => {
     e.preventDefault();
+    settimeline(
+      <div>
+        <br />
+        <div className="loader big"></div>
+      </div>
+    );
     fetch("https://thegetsocial.azurewebsites.net/get-all-post", {
       // fetch("http://localhost:8080/get-all-post", {
       method: "POST",
@@ -46,6 +52,12 @@ const Timeline = (props) => {
   };
   const handleMyFriends = (e) => {
     e.preventDefault();
+    settimeline(
+      <div>
+        <br />
+        <div className="loader big"></div>
+      </div>
+    );
     fetch("https://thegetsocial.azurewebsites.net/get-all-friends", {
       // fetch("http://localhost:8080/get-all-friends", {
       method: "POST",
@@ -57,6 +69,7 @@ const Timeline = (props) => {
         if (result.data.length === 0) {
           settimeline(
             <p>
+              <br />
               <b>-- Your Friend List is Empty --</b>
             </p>
           );
@@ -87,6 +100,12 @@ const Timeline = (props) => {
   };
   const handleAllInvitation = (e) => {
     e.preventDefault();
+    settimeline(
+      <div>
+        <br />
+        <div className="loader big"></div>
+      </div>
+    );
     const data = { id: props.id, username: props.username };
     fetch("https://thegetsocial.azurewebsites.net/get-all-invitation", {
       // fetch("http://localhost:8080/get-all-invitation", {
@@ -99,6 +118,7 @@ const Timeline = (props) => {
         if (result.data.length === 0) {
           settimeline(
             <p>
+              <br />
               <b>-- No Invitation Available --</b>
             </p>
           );

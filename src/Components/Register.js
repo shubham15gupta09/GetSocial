@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from "./Login";
 import Timeline from "./Timeline";
 
 const Register = (props) => {
+  const [loader, setloader] = useState("");
+
   const handleStateToLogin = () => {
     props.setinitial(<Login setinitial={props.setinitial} />);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setloader(
+      <div>
+        <br />
+        <div className="loader small"></div>
+      </div>
+    );
     const RegisterData = {
       name: document.getElementById("name").value.trim(),
       username: document.getElementById("username").value.trim(),
@@ -25,6 +32,7 @@ const Register = (props) => {
       RegisterData.email === "" ||
       RegisterData.password === ""
     ) {
+      setloader("");
       alert("Please fill all the fields");
     } else {
       // fetch("http://localhost:8080/add-user", {
@@ -36,7 +44,6 @@ const Register = (props) => {
         .then((result) => result.json())
         .then((result) => {
           if (result.response === "success") {
-            alert("Success");
             props.setinitial(
               <Timeline
                 setinitial={props.setinitial}
@@ -46,6 +53,7 @@ const Register = (props) => {
               />
             );
           } else if (result.response === "failed") {
+            setloader("");
             alert(result.message);
             document.getElementById("username").value = "";
             document.getElementById("email").value = "";
@@ -81,6 +89,7 @@ const Register = (props) => {
         </button>
         <br />
       </form>
+      {loader}
       <p>
         Want to Login In Instead ?
         <button className="button" onClick={handleStateToLogin}>
