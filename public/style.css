@@ -122,6 +122,27 @@ input:hover {
     height: 12px;
 }
 
+.bottomBar-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bottomBar-li {
+    display: inline;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .big {
     border: 10px solid #f3f3f3;
     border-top: 5px solid red;

@@ -24,11 +24,19 @@ const Welcome = (props) => {
           Register
         </button>
       </p>
-      <p>
-        There is a huge Monopoly of facebook on social media .Hence i thought
-        why can't i make someting similar ?
-      </p>
-      <p>I will keep on adding more features</p>
+      <ul className="bottomBar-ul">
+        <b>
+          <li className="bottomBar-li">
+            <a href="/about">About</a>
+          </li>
+          <li className="bottomBar-li">
+            <a href="/help">Help Center</a>
+          </li>
+          <li className="bottomBar-li">
+            <a href="privacyPolicy">Privacy Policy</a>
+          </li>
+        </b>
+      </ul>
     </div>
   );
 };
