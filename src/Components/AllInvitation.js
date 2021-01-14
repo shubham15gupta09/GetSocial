@@ -10,8 +10,7 @@ const Allinvitation = (props) => {
       name: d.name,
       username: d.username,
     };
-    fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
-      // fetch("http://localhost:8080/accept-invite", {
+    fetch("http://localhost:8080/accept-invite", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -30,8 +29,7 @@ const Allinvitation = (props) => {
       },
     };
     console.log(data);
-    fetch("https://thegetsocial.azurewebsites.net/reject-invite", {
-      // fetch("http://localhost:8080/reject-invite", {
+    fetch("http://localhost:8080/reject-invite", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },

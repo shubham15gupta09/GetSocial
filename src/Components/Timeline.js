@@ -30,8 +30,7 @@ const Timeline = (props) => {
         <div className="loader big"></div>
       </div>
     );
-    fetch("https://thegetsocial.azurewebsites.net/get-all-post", {
-      // fetch("http://localhost:8080/get-all-post", {
+    fetch("http://localhost:8080/get-all-post", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -58,8 +57,7 @@ const Timeline = (props) => {
         <div className="loader big"></div>
       </div>
     );
-    fetch("https://thegetsocial.azurewebsites.net/get-all-friends", {
-      // fetch("http://localhost:8080/get-all-friends", {
+    fetch("http://localhost:8080/get-all-friends", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -107,8 +105,7 @@ const Timeline = (props) => {
       </div>
     );
     const data = { id: props.id, username: props.username };
-    fetch("https://thegetsocial.azurewebsites.net/get-all-invitation", {
-      // fetch("http://localhost:8080/get-all-invitation", {
+    fetch("http://localhost:8080/get-all-invitation", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },

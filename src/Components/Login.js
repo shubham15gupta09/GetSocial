@@ -24,8 +24,7 @@ function Login(props) {
       setloader("");
       alert("Please fill all the fields");
     } else {
-      // fetch("http://localhost:8080/verify-user", {
-      fetch("https://thegetsocial.azurewebsites.net/verify-user", {
+      fetch("http://localhost:8080/verify-user", {
         method: "POST",
         body: JSON.stringify(LoginData),
         headers: { "Content-type": "application/json; charset=UTF-8" },
