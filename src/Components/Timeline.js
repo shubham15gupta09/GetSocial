@@ -30,7 +30,7 @@ const Timeline = (props) => {
         <div className="loader big"></div>
       </div>
     );
-    fetch("http://localhost:8080/get-all-post", {
+    fetch(window.location.href + "/get-all-post", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -57,7 +57,7 @@ const Timeline = (props) => {
         <div className="loader big"></div>
       </div>
     );
-    fetch("http://localhost:8080/get-all-friends", {
+    fetch(window.location.href + "/get-all-friends", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -105,7 +105,7 @@ const Timeline = (props) => {
       </div>
     );
     const data = { id: props.id, username: props.username };
-    fetch("http://localhost:8080/get-all-invitation", {
+    fetch(window.location.href + "/get-all-invitation", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
