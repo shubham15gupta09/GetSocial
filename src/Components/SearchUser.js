@@ -16,7 +16,7 @@ function SearchUser(props) {
       to_username: result.data.username,
       name: props.name,
     };
-    fetch(window.location.href + "/send-invite", {
+    fetch("http://localhost:8080/send-invite", {
       method: "POST",
       body: JSON.stringify(Data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -43,7 +43,7 @@ function SearchUser(props) {
     let username_search = {
       username: document.getElementById("username_search").value.trim(),
     };
-    fetch(window.location.href + "/get-user", {
+    fetch("http://localhost:8080/get-user", {
       method: "POST",
       body: JSON.stringify(username_search),
       headers: { "Content-type": "application/json; charset=UTF-8" },

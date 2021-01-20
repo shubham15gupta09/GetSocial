@@ -35,7 +35,7 @@ const Register = (props) => {
       setloader("");
       alert("Please fill all the fields");
     } else {
-      fetch(window.location.href + "/add-user", {
+      fetch("http://localhost:8080/add-user", {
         method: "POST",
         body: JSON.stringify(RegisterData),
         headers: { "Content-type": "application/json; charset=UTF-8" },

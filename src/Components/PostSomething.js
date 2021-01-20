@@ -11,7 +11,7 @@ function PostSomething(props) {
     if (Post.post === "") {
       alert("Please write something");
     } else {
-      fetch(window.location.href + "/add-post", {
+      fetch("http://localhost:8080/add-post", {
         method: "POST",
         body: JSON.stringify(Post),
         headers: { "Content-type": "application/json; charset=UTF-8" },
