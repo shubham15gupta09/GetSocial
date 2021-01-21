@@ -11,7 +11,7 @@ function PostSomething(props) {
     if (Post.post === "") {
       alert("Please write something");
     } else {
-      fetch("http://localhost:8080/add-post", {
+      fetch("https://thegetsocial.azurewebsites.net/add-post", {
         method: "POST",
         body: JSON.stringify(Post),
         headers: { "Content-type": "application/json; charset=UTF-8" },
