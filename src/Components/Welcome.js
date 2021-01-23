@@ -5,10 +5,12 @@ import Register from "./Register";
 const Welcome = (props) => {
   const [initialDivStyle, setinitialDivStyle] = useState(`block`);
   const handleLogin = () => {
+    document.title = "Login";
     props.setinitial(<Login setinitial={props.setinitial} />);
     setinitialDivStyle(`none`);
   };
   const handleRegister = () => {
+    document.title = "Register";
     props.setinitial(<Register setinitial={props.setinitial} />);
     setinitialDivStyle(`none`);
   };

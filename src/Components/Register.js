@@ -6,6 +6,7 @@ const Register = (props) => {
   const [loader, setloader] = useState("");
 
   const handleStateToLogin = () => {
+    document.title = "Login";
     props.setinitial(<Login setinitial={props.setinitial} />);
   };
 

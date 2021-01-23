@@ -1,4 +1,22 @@
 function getAllFriends(props) {
+  const handleRemoveFriend = (f) => {
+    const data = {
+      currentUser: {
+        username: props.username,
+        id: props.id,
+      },
+      username: f.username,
+    };
+    console.log(data);
+    fetch("https://thegetsocial.azurewebsites.net/remove-friend", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => alert(result.message))
+      .catch((error) => alert(error.message));
+  };
   return (
     <div>
       <h3 className="here">All Friends</h3>
@@ -10,6 +28,9 @@ function getAllFriends(props) {
           <p>
             <i>{p.name}</i>
           </p>
+          <button className="button" onClick={() => handleRemoveFriend(p)}>
+            Remove Friend
+          </button>
         </div>
       ))}
     </div>

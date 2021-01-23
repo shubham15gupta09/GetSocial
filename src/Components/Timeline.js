@@ -12,6 +12,7 @@ const Timeline = (props) => {
     <PostSomething username={props.username} id={props.id} />
   );
   const handlePostSomething = (e) => {
+    document.title = "Post Something";
     e.preventDefault();
     settimeline(
       <PostSomething
@@ -23,6 +24,7 @@ const Timeline = (props) => {
     );
   };
   const handleAllPost = (e) => {
+    document.title = "All Post";
     e.preventDefault();
     settimeline(
       <div>
@@ -50,6 +52,7 @@ const Timeline = (props) => {
       .catch((error) => alert("Error occured : " + error));
   };
   const handleMyFriends = (e) => {
+    document.title = "My Friends";
     e.preventDefault();
     settimeline(
       <div>
@@ -86,6 +89,7 @@ const Timeline = (props) => {
       .catch((error) => console.log(error));
   };
   const handleSearchUser = (e) => {
+    document.title = "Search User";
     e.preventDefault();
     settimeline(
       <SearchUser
@@ -97,6 +101,7 @@ const Timeline = (props) => {
     );
   };
   const handleAllInvitation = (e) => {
+    document.title = "All Invitation";
     e.preventDefault();
     settimeline(
       <div>

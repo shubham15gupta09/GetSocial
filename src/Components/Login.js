@@ -5,6 +5,7 @@ import Register from "./Register";
 function Login(props) {
   const [loader, setloader] = useState("");
   const handleStateToRegister = () => {
+    document.title = "Register";
     props.setinitial(<Register setinitial={props.setinitial} />);
   };
   const handleSubmit = (e) => {
