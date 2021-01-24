@@ -10,7 +10,7 @@ const AllPost = (props) => {
       from_username: props.username,
       from_id: props.id,
     };
-    fetch("http://localhost:8080/remove-post", {
+    fetch("https://thegetsocial.azurewebsites.net/remove-post", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
