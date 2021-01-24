@@ -3,8 +3,10 @@ import Login from "./Login";
 import Timeline from "./Timeline";
 
 const Register = (props) => {
+  // the local statre for loader
   const [loader, setloader] = useState("");
 
+  // this function will handle the login state render
   const handleStateToLogin = () => {
     document.title = "Login";
     props.setinitial(<Login setinitial={props.setinitial} />);
@@ -18,6 +20,8 @@ const Register = (props) => {
         <div className="loader small"></div>
       </div>
     );
+
+    //register data to be sent to the server
     const RegisterData = {
       name: document.getElementById("name").value.trim(),
       username: document.getElementById("username").value.trim(),
@@ -84,6 +88,12 @@ const Register = (props) => {
         <br />
         <input type="password" name="password" id="password" required />
         <br />
+        <p style={{ fontSize: "small" }}>
+          <b>
+            By Clicking on Register you agree to our
+            <a href="/privacy.html"> Privacy Policy</a>
+          </b>
+        </p>
         <button className="button" onClick={(e) => handleSubmit(e)}>
           Register
         </button>

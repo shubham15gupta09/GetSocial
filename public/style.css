@@ -12,6 +12,12 @@ input, textarea {
     border: 2px solid blueviolet;
 }
 
+input:focus {
+    font-weight: bold;
+    border: 2px solid rgb(13, 13, 228);
+    cursor: pointer;
+}
+
 textarea {
     border-radius: 10px !important;
 }
@@ -47,10 +53,6 @@ textarea {
     text-align: left !important;
 }
 
-input:hover {
-    border: 2px solid rgb(35, 175, 35);
-}
-
 .button {
     outline: none;
     padding: 8px;
@@ -62,9 +64,9 @@ input:hover {
 }
 
 .button:hover {
-    color: black;
-    border: 2px solid rgb(35, 175, 35);
-    background-color: rgb(235, 164, 164);
+    color: blue;
+    font-weight: bold;
+    border: 2px solid rgb(84, 84, 204);
     cursor: pointer;
 }
 

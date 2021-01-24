@@ -1,4 +1,5 @@
-function getAllFriends(props) {
+const getAllFriends = (props) => {
+  // this will handle the remove friends
   const handleRemoveFriend = (f) => {
     const data = {
       currentUser: {
@@ -7,16 +8,19 @@ function getAllFriends(props) {
       },
       username: f.username,
     };
-    console.log(data);
     fetch("https://thegetsocial.azurewebsites.net/remove-friend", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((result) => result.json())
-      .then((result) => alert(result.message))
+      .then((result) => {
+        alert(result.message);
+        props.reRender("getAllFriends");
+      })
       .catch((error) => alert(error.message));
   };
+
   return (
     <div>
       <h3 className="here">All Friends</h3>
@@ -35,6 +39,6 @@ function getAllFriends(props) {
       ))}
     </div>
   );
-}
+};
 
 export default getAllFriends;

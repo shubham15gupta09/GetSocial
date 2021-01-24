@@ -3,19 +3,29 @@ import Timeline from "./Timeline";
 import Register from "./Register";
 
 function Login(props) {
+  // this will act as loader
   const [loader, setloader] = useState("");
+
+  // to switch the state to Register page
   const handleStateToRegister = () => {
     document.title = "Register";
     props.setinitial(<Register setinitial={props.setinitial} />);
   };
+
+  // this will handle the Login In option
   const handleSubmit = (e) => {
+    // here we're setting the loader
     setloader(
       <div>
         <br />
         <div className="loader small"></div>
       </div>
     );
+
+    // preventing the default action of submit
     e.preventDefault();
+
+    // login data to be sent to the server
     const LoginData = {
       username: document.getElementById("username").value.trim(),
       password: document.getElementById("password").value.trim(),

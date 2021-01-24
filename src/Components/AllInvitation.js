@@ -1,6 +1,7 @@
 import React from "react";
 
 const Allinvitation = (props) => {
+  // this will handle accept invitation
   const handleAcceptinvitation = (e, d) => {
     e.preventDefault();
     const data = {
@@ -16,9 +17,14 @@ const Allinvitation = (props) => {
       headers: { "Content-type": "application/json; charset=UTF-8" },
     })
       .then((result) => result.json())
-      .then((result) => alert("Accepted the invitation"))
+      .then((result) => {
+        alert("Accepted the invitation");
+        props.reRender("AllInvitation");
+      })
       .catch((error) => alert("Error occured : " + error));
   };
+
+  // this will handle reject invitation
   const handleRejectInvitation = (e, d) => {
     const data = {
       username: props.username,
@@ -28,7 +34,6 @@ const Allinvitation = (props) => {
         name: d.name,
       },
     };
-    console.log(data);
     fetch("https://thegetsocial.azurewebsites.net/reject-invite", {
       method: "POST",
       body: JSON.stringify(data),
@@ -40,6 +45,7 @@ const Allinvitation = (props) => {
       })
       .catch((error) => alert("Error occured : " + error));
   };
+
   return (
     <div>
       <h3 className="here">All Invitation</h3>

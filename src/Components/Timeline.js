@@ -11,9 +11,18 @@ const Timeline = (props) => {
   const [timeline, settimeline] = useState(
     <PostSomething username={props.username} id={props.id} />
   );
-  const handlePostSomething = (e) => {
+  const reRender = (fnName) => {
+    if (fnName === "AllPost") {
+      handleAllPost();
+    } else if (fnName === "getAllFriends") {
+      handleMyFriends();
+    } else if (fnName === "AllInvitation") {
+      handleAllInvitation();
+    }
+  };
+
+  const handlePostSomething = () => {
     document.title = "Post Something";
-    e.preventDefault();
     settimeline(
       <PostSomething
         settimeline={settimeline}
@@ -23,9 +32,8 @@ const Timeline = (props) => {
       />
     );
   };
-  const handleAllPost = (e) => {
+  const handleAllPost = () => {
     document.title = "All Post";
-    e.preventDefault();
     settimeline(
       <div>
         <br />
@@ -46,14 +54,14 @@ const Timeline = (props) => {
             username={props.username}
             name={props.name}
             id={props.id}
+            reRender={reRender}
           />
         );
       })
       .catch((error) => alert("Error occured : " + error));
   };
-  const handleMyFriends = (e) => {
+  const handleMyFriends = () => {
     document.title = "My Friends";
-    e.preventDefault();
     settimeline(
       <div>
         <br />
@@ -82,15 +90,16 @@ const Timeline = (props) => {
               name={props.name}
               id={props.id}
               data={result.data}
+              reRender={reRender}
             />
           );
         }
       })
       .catch((error) => console.log(error));
   };
-  const handleSearchUser = (e) => {
+  const handleSearchUser = () => {
     document.title = "Search User";
-    e.preventDefault();
+
     settimeline(
       <SearchUser
         settimeline={settimeline}
@@ -100,9 +109,8 @@ const Timeline = (props) => {
       />
     );
   };
-  const handleAllInvitation = (e) => {
+  const handleAllInvitation = () => {
     document.title = "All Invitation";
-    e.preventDefault();
     settimeline(
       <div>
         <br />
@@ -132,6 +140,7 @@ const Timeline = (props) => {
               id={props.id}
               data={result.data}
               name={props.name}
+              reRender={reRender}
             />
           );
         }
@@ -151,6 +160,7 @@ const Timeline = (props) => {
       settimeline("Your timeline");
     }
   };
+
   return (
     <div>
       <p>
@@ -158,27 +168,27 @@ const Timeline = (props) => {
       </p>
       <p>
         {"   "}
-        <button className="button" onClick={(e) => handlePostSomething(e)}>
+        <button className="button" onClick={() => handlePostSomething()}>
           Post Something
         </button>{" "}
         {"   "}
-        <button className="button" onClick={(e) => handleAllPost(e)}>
+        <button className="button" onClick={() => handleAllPost()}>
           All Post
         </button>
         {"   "}
-        <button className="button" onClick={(e) => handleMyFriends(e)}>
+        <button className="button" onClick={() => handleMyFriends()}>
           My Friends
         </button>
         {"   "}
-        <button className="button" onClick={(e) => handleSearchUser(e)}>
+        <button className="button" onClick={() => handleSearchUser()}>
           Search a User
         </button>
         {"   "}
-        <button className="button" onClick={(e) => handleAllInvitation(e)}>
+        <button className="button" onClick={() => handleAllInvitation()}>
           All Invitation
         </button>
         {"   "}
-        <button className="button" onClick={(e) => handleLogOut(e)}>
+        <button className="button" onClick={() => handleLogOut()}>
           Log out !
         </button>
         {"   "}

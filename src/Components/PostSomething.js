@@ -1,6 +1,7 @@
 import React from "react";
 
-function PostSomething(props) {
+const PostSomething = (props) => {
+  //handle a new post
   const handlePostSubmit = (e) => {
     e.preventDefault();
     const Post = {
@@ -9,7 +10,7 @@ function PostSomething(props) {
       post: document.getElementById("post").value.trim(),
     };
     if (Post.post === "") {
-      alert("Please write something");
+      alert("Please write something :(");
     } else {
       fetch("https://thegetsocial.azurewebsites.net/add-post", {
         method: "POST",
@@ -29,6 +30,7 @@ function PostSomething(props) {
         .catch((error) => alert("Error occured : " + error));
     }
   };
+
   return (
     <div>
       <h3 className="here">Post Something</h3>
@@ -37,8 +39,8 @@ function PostSomething(props) {
           name="post"
           id="post"
           required
-          rows="6"
-          cols="30"
+          rows="7"
+          cols="35"
           maxLength="80"
           placeholder="Write something here .... max length 80 :)"
         />
@@ -49,6 +51,6 @@ function PostSomething(props) {
       </form>
     </div>
   );
-}
+};
 
 export default PostSomething;

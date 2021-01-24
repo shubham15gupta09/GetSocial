@@ -29,13 +29,13 @@ const Welcome = (props) => {
       <ul className="bottomBar-ul">
         <b>
           <li className="bottomBar-li">
-            <a href="/about">About</a>
+            <a href="/about.html">About</a>
           </li>
           <li className="bottomBar-li">
-            <a href="/help">Help Center</a>
+            <a href="/help.html">Help Center</a>
           </li>
           <li className="bottomBar-li">
-            <a href="privacyPolicy">Privacy Policy</a>
+            <a href="/privacy.html">Privacy Policy</a>
           </li>
         </b>
       </ul>
