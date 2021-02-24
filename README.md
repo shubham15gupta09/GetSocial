@@ -5,7 +5,7 @@ A new Social Media App made to respect Privacy of Users .
 https://thegetsocial.azurewebsites.net/
 
 ## Tech Used
-HTML , CSS , JS , React , Express , MongoDb , Node js , Azure ( Cloud Deployment )
+HTML , CSS , JS , React , Express , MongoDb ( Cluster0 : Mumbai SouthAsia1 ) , Node js , Azure ( Cloud Deployment )
 
 ## Features
 <ul>
@@ -19,7 +19,6 @@ HTML , CSS , JS , React , Express , MongoDb , Node js , Azure ( Cloud Deployment
 <ul>
  <li>Profile card</li>
  <li>Block / Unblock a User</li>
- <li>Profile card</li>
  <li>Like / Retweet a post</li>
  <li>Sign in with third party platform like Google , Twitter </li>
 </ul>
