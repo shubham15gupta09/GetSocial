@@ -88,7 +88,7 @@ const Register = (props) => {
 
         <p style={{ fontSize: "small" }}>
           <b>
-            By Clicking on Register you agree to our <a href="/html/privacy.html"> Privacy Policy</a>{" "}and{" "}<a href="/html/tnc.html">Terms & Condition</a>
+            By Clicking on Register you agree to our <a href="/privacy.html"> Privacy Policy</a>{" "}and{" "}<a href="/tnc.html">Terms & Condition</a>
           </b>
         </p>
 
