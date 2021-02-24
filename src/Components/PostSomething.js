@@ -37,7 +37,11 @@ const PostSomething = (props) => {
       <h3 className="here">Post Something</h3>
 
       <form>
-        <textarea name="post" id="post" required rows="7" cols="35" maxLength="80" placeholder="Write something here .... max length 80 :)" />
+        <textarea name="post"
+          id="post" required
+          rows="7" cols="30"
+          maxLength="80"
+          placeholder="Write something here .... max length 80 :)" />
         <br />
         <button className="button" onClick={(e) => handlePostSubmit(e)}>Post</button>
       </form>
