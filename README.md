@@ -23,6 +23,13 @@ HTML , CSS , JS , React , Express , MongoDb ( Cluster0 : Mumbai SouthAsia1 ) , N
  <li>Sign in with third party platform like Google , Twitter </li>
 </ul>
 
+<div>
+    <h1>Want to contribute ?? </h1>
+    Welcome ! :)<br>
+    Just fork this repo and start working . Check the Requirements below <br>
+    Waiting for your PR
+</div>
+
 # How to use ?
 <ul>
     <li>Using LocalHost <br>
