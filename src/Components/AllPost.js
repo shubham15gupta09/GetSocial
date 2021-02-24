@@ -25,21 +25,20 @@ const AllPost = (props) => {
   return (
     <div>
       <h3 className="here">All Posts</h3>
+
       {props.allpost.map((p) => (
         <div className="post" key={p._id}>
-          <p>
-            <b>@{p.username}</b>
-          </p>
-          <p>
-            <i>{p.post}</i>
-          </p>
+
+          <p><b>@{p.username}</b></p>
+          <p><i>{p.post}</i></p>
+
           {props.username === p.username ? (
-            <button className="button" onClick={() => handleDelete(p)}>
-              Delete
-            </button>
+            <button className="button" onClick={() => handleDelete(p)}>Delete</button>
           ) : null}
+
         </div>
       ))}
+
     </div>
   );
 };

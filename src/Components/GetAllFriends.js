@@ -1,6 +1,8 @@
 const getAllFriends = (props) => {
+
   // this will handle the remove friends
   const handleRemoveFriend = (f) => {
+
     const data = {
       currentUser: {
         username: props.username,
@@ -8,6 +10,7 @@ const getAllFriends = (props) => {
       },
       username: f.username,
     };
+
     fetch("https://thegetsocial.azurewebsites.net/remove-friend", {
       method: "POST",
       body: JSON.stringify(data),
@@ -23,20 +26,20 @@ const getAllFriends = (props) => {
 
   return (
     <div>
+
       <h3 className="here">All Friends</h3>
+
       {props.data.map((p) => (
         <div className="friends" key={p.username}>
-          <p>
-            <b>@{p.username}</b>
-          </p>
-          <p>
-            <i>{p.name}</i>
-          </p>
-          <button className="button" onClick={() => handleRemoveFriend(p)}>
-            Remove Friend
-          </button>
+
+          <p><b>@{p.username}</b></p>
+          <p><i>{p.name}</i></p>
+
+          <button className="button" onClick={() => handleRemoveFriend(p)}>Remove Friend</button>
+
         </div>
       ))}
+
     </div>
   );
 };

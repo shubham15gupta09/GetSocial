@@ -2,6 +2,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     align-items: center;
+    zoom: 140%;
 }
 
 input, textarea {

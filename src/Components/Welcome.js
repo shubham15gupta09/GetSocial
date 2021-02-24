@@ -4,16 +4,19 @@ import Register from "./Register";
 
 const Welcome = (props) => {
   const [initialDivStyle, setinitialDivStyle] = useState(`block`);
+
   const handleLogin = () => {
     document.title = "Login";
     props.setinitial(<Login setinitial={props.setinitial} />);
     setinitialDivStyle(`none`);
   };
+
   const handleRegister = () => {
     document.title = "Register";
     props.setinitial(<Register setinitial={props.setinitial} />);
     setinitialDivStyle(`none`);
   };
+
   return (
     <div className="Welcome-Screen" style={{ display: `${initialDivStyle}` }}>
       <h2 className="welcome"> Welcome to Get Social </h2>
@@ -36,6 +39,9 @@ const Welcome = (props) => {
           </li>
           <li className="bottomBar-li">
             <a href="/privacy.html">Privacy Policy</a>
+          </li>
+          <li className="bottomBar-li">
+            <a href="/tnc.html">Terms & Condition</a>
           </li>
         </b>
       </ul>

@@ -3,7 +3,9 @@ import React from "react";
 const Allinvitation = (props) => {
   // this will handle accept invitation
   const handleAcceptinvitation = (e, d) => {
+
     e.preventDefault();
+
     const data = {
       from_username: props.username,
       from_id: props.id,
@@ -11,6 +13,7 @@ const Allinvitation = (props) => {
       name: d.name,
       username: d.username,
     };
+
     fetch("https://thegetsocial.azurewebsites.net/accept-invite", {
       method: "POST",
       body: JSON.stringify(data),
@@ -26,6 +29,7 @@ const Allinvitation = (props) => {
 
   // this will handle reject invitation
   const handleRejectInvitation = (e, d) => {
+
     const data = {
       username: props.username,
       id: props.id,
@@ -34,6 +38,7 @@ const Allinvitation = (props) => {
         name: d.name,
       },
     };
+
     fetch("https://thegetsocial.azurewebsites.net/reject-invite", {
       method: "POST",
       body: JSON.stringify(data),
@@ -48,29 +53,21 @@ const Allinvitation = (props) => {
 
   return (
     <div>
+
       <h3 className="here">All Invitation</h3>
+
       {props.data.map((i) => (
         <div className="AllInvitation" key={i.username}>
-          <p>
-            <b>Name</b> : @{i.name}
-          </p>
-          <p>
-            <b>Username</b> : @{i.username}
-          </p>
-          <button
-            className="button"
-            onClick={(e) => handleAcceptinvitation(e, i)}
-          >
-            Accept invitation
-          </button>
-          <button
-            className="button"
-            onClick={(e) => handleRejectInvitation(e, i)}
-          >
-            Reject invitation
-          </button>
+
+          <p><b>Name</b> : @{i.name}</p>
+          <p><b>Username</b> : @{i.username}</p>
+
+          <button className="button" onClick={(e) => handleAcceptinvitation(e, i)} >Accept invitation</button>
+          <button className="button" onClick={(e) => handleRejectInvitation(e, i)} >Reject invitation</button>
+
         </div>
       ))}
+
     </div>
   );
 };

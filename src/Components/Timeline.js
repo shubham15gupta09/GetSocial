@@ -8,9 +8,11 @@ import AllPost from "./AllPost";
 import GetAllFriends from "./GetAllFriends";
 
 const Timeline = (props) => {
+
   const [timeline, settimeline] = useState(
     <PostSomething username={props.username} id={props.id} />
   );
+
   const reRender = (fnName) => {
     if (fnName === "AllPost") {
       handleAllPost();
@@ -32,14 +34,10 @@ const Timeline = (props) => {
       />
     );
   };
+
   const handleAllPost = () => {
     document.title = "All Post";
-    settimeline(
-      <div>
-        <br />
-        <div className="loader big"></div>
-      </div>
-    );
+    settimeline(<div><br /><div className="loader big"></div></div>);
     fetch("https://thegetsocial.azurewebsites.net/get-all-post", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
@@ -47,27 +45,29 @@ const Timeline = (props) => {
     })
       .then((result) => result.json())
       .then((result) => {
-        settimeline(
-          <AllPost
-            settimeline={settimeline}
-            allpost={result.result.reverse()}
-            username={props.username}
-            name={props.name}
-            id={props.id}
-            reRender={reRender}
-          />
-        );
+
+        if (result.result.length === 0) {
+          settimeline(<p><br /><b>-- Your Friend List is Empty ! So No Post to show --</b></p>);
+        } else {
+          settimeline(
+            <AllPost
+              settimeline={settimeline}
+              allpost={result.result.reverse()}
+              username={props.username}
+              name={props.name}
+              id={props.id}
+              reRender={reRender}
+            />
+          );
+        }
+
       })
       .catch((error) => alert("Error occured : " + error));
   };
+
   const handleMyFriends = () => {
     document.title = "My Friends";
-    settimeline(
-      <div>
-        <br />
-        <div className="loader big"></div>
-      </div>
-    );
+    settimeline(<div><br /><div className="loader big"></div></div>);
     fetch("https://thegetsocial.azurewebsites.net/get-all-friends", {
       method: "POST",
       body: JSON.stringify({ username: props.username, id: props.id }),
@@ -76,12 +76,7 @@ const Timeline = (props) => {
       .then((result) => result.json())
       .then((result) => {
         if (result.data.length === 0) {
-          settimeline(
-            <p>
-              <br />
-              <b>-- Your Friend List is Empty --</b>
-            </p>
-          );
+          settimeline(<p><br /><b>-- Your Friend List is Empty --</b></p>);
         } else {
           settimeline(
             <GetAllFriends
@@ -97,6 +92,7 @@ const Timeline = (props) => {
       })
       .catch((error) => console.log(error));
   };
+
   const handleSearchUser = () => {
     document.title = "Search User";
 
@@ -109,15 +105,15 @@ const Timeline = (props) => {
       />
     );
   };
+
   const handleAllInvitation = () => {
+
     document.title = "All Invitation";
-    settimeline(
-      <div>
-        <br />
-        <div className="loader big"></div>
-      </div>
-    );
+
+    settimeline(<div><br /> <div className="loader big"></div></div>);
+
     const data = { id: props.id, username: props.username };
+
     fetch("https://thegetsocial.azurewebsites.net/get-all-invitation", {
       method: "POST",
       body: JSON.stringify(data),
@@ -127,11 +123,7 @@ const Timeline = (props) => {
       .then((result) => {
         if (result.data.length === 0) {
           settimeline(
-            <p>
-              <br />
-              <b>-- No Invitation Available --</b>
-            </p>
-          );
+            <p><br /><b>-- No Invitation Available --</b></p>);
         } else {
           settimeline(
             <AllInvitation
@@ -147,8 +139,11 @@ const Timeline = (props) => {
       })
       .catch((error) => alert("Error occured : " + error));
   };
+
   const handleLogOut = () => {
+
     if (window.confirm("Are you sure ? ...")) {
+
       props.setinitial(
         <Login
           setinitial={props.setinitial}
@@ -156,6 +151,7 @@ const Timeline = (props) => {
           id={props.id}
         />
       );
+
     } else {
       settimeline("Your timeline");
     }
@@ -163,37 +159,20 @@ const Timeline = (props) => {
 
   return (
     <div>
+
+      <p>Hello <b>{props.name}</b> <i>(@{props.username})</i></p>
+
       <p>
-        Hello <b>{props.name}</b> <i>(@{props.username})</i>
+        <button className="button" onClick={() => handlePostSomething()}>Post Something</button>{" "}
+        <button className="button" onClick={() => handleAllPost()}>All Post</button>{"   "}
+        <button className="button" onClick={() => handleMyFriends()}>My Friends</button>{"   "}
+        <button className="button" onClick={() => handleSearchUser()}>Search a User</button>{"   "}
+        <button className="button" onClick={() => handleAllInvitation()}>All Invitation</button>{"   "}
+        <button className="button" onClick={() => handleLogOut()}>Log out !</button>{"   "}
       </p>
-      <p>
-        {"   "}
-        <button className="button" onClick={() => handlePostSomething()}>
-          Post Something
-        </button>{" "}
-        {"   "}
-        <button className="button" onClick={() => handleAllPost()}>
-          All Post
-        </button>
-        {"   "}
-        <button className="button" onClick={() => handleMyFriends()}>
-          My Friends
-        </button>
-        {"   "}
-        <button className="button" onClick={() => handleSearchUser()}>
-          Search a User
-        </button>
-        {"   "}
-        <button className="button" onClick={() => handleAllInvitation()}>
-          All Invitation
-        </button>
-        {"   "}
-        <button className="button" onClick={() => handleLogOut()}>
-          Log out !
-        </button>
-        {"   "}
-      </p>
+
       {timeline}
+
     </div>
   );
 };
