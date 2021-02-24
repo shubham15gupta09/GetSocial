@@ -11,7 +11,7 @@ HTML , CSS , JS , React , Express , MongoDb ( Cluster0 : Mumbai SouthAsia1 ) , N
 <ul>
   <li>Post Something</li>
   <li>See Post from your friends</li>
-  <li>Post Something</li>
+  <li>Search a User / Friend</li>
   <li>Send an invitation to your friend</li>
 </ul>
 
