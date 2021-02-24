@@ -22,3 +22,19 @@ HTML , CSS , JS , React , Express , MongoDb ( Cluster0 : Mumbai SouthAsia1 ) , N
  <li>Like / Retweet a post</li>
  <li>Sign in with third party platform like Google , Twitter </li>
 </ul>
+
+# How to use ?
+<ul>
+    <li>Using LocalHost <br>
+        1 . clone this project <br>
+        2 . npm install<br>
+        3 . npm start<br>
+    </li>
+    <li>Using Virtual Machine <br>
+        1 . Create a VM on Google cloud / Azure  (os = linux) <br> 
+        2 . Open the SSH terminal -> Log In  <br>
+        3 . Install Nodejs <br>
+        4 . clone this project  and * cd GetSocial * <br>
+        5 . npm start<br>    
+    </li>
+</ul>
