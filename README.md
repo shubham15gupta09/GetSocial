@@ -28,7 +28,7 @@ HTML , CSS , JS , React , Express , MongoDb ( Cluster0 : Mumbai SouthAsia1 ) , N
 I am happy if you want to improve the Get Social.
 Fork this repository and send a PR . Do remember to send a Backend for the Same As I have to add in the Actuall Backend to make the feature work
 
-### How to use ?
+### How to use  / Installation ?
 <ul>
     <li>Using LocalHost <br>
         1 . clone this project <br>
