@@ -1,6 +1,6 @@
 # GetSocial
 
-A new Social Media App made to respect Privacy of Users . 
+A new Social Media App made to respect the Privacy of Users.
 <br/>
 https://thegetsocial.azurewebsites.net/
 
