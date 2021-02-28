@@ -6,7 +6,7 @@ A new Social Media App made to respect the Privacy of Users.
 https://thegetsocial.azurewebsites.net/
 
 ## Ui
-<img src="./images/img1.png"  width="210" height="280"> , <img src="./images/img2.png"  width="210" height="280"> <br/>
+<img src="./images/img1.png"  width="300" height="400"> , <img src="./images/img2.png"  width="300" height="400"> <br/>
 <img src="./images/img3.png"  width="150" height="200"> , <img src="./images/img4.png"  width="150" height="200"> <br/>
 
 
