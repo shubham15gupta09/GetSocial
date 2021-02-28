@@ -5,6 +5,13 @@ A new Social Media App made to respect the Privacy of Users.
 <br/>
 https://thegetsocial.azurewebsites.net/
 
+## Ui
+<img src="./images/img1.png" >
+<img src="./images/img2.png" >
+<img src="./images/img3.png" >
+<img src="./images/img4.png" >
+
+
 ## Tech Used
 <p> <b>Frontend</b> : React , HTML , CSS , Js </p>
 <p> <b>Backend</b> : Node Js</p>
