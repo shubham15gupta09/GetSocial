@@ -1,7 +1,4 @@
 # GetSocial
-
-## Description
-A new Social Media App made to respect the Privacy of Users.
 <br/>
 https://thegetsocial.azurewebsites.net/
 
