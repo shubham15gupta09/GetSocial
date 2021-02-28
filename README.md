@@ -1,5 +1,6 @@
 # GetSocial
 <br/>
+<p>A new Social Media App made to respect the Privacy of Users.</p>
 https://thegetsocial.azurewebsites.net/
 
 ## Ui
