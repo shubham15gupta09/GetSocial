@@ -4,7 +4,7 @@
 https://thegetsocial.azurewebsites.net/
 
 ## Ui
-<img src="./images/img1.png"  width="300" height="500"> , <img src="./images/img2.png"  width="300" height="500"> , <img src="./images/img3.png"  width="300" height="500"> <br/>
+<img src="./images/img1.png"  width="300" height="600"> , <img src="./images/img2.png"  width="300" height="600"> , <img src="./images/img3.png"  width="300" height="600"> <br/>
 
 ## Tech Used
 <p> <b>Frontend</b> : React , HTML , CSS , Js </p>
