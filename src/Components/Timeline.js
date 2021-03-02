@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Login from "./Login";
-
+import Welcome from "./Welcome";
 import SearchUser from "./SearchUser";
 import PostSomething from "./PostSomething";
 import AllInvitation from "./AllInvitation";
@@ -145,11 +144,7 @@ const Timeline = (props) => {
     if (window.confirm("Are you sure ? ...")) {
 
       props.setinitial(
-        <Login
-          setinitial={props.setinitial}
-          username={props.username}
-          id={props.id}
-        />
+        <Welcome setinitial={props.setinitial} />
       );
 
     } else {

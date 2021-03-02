@@ -1,61 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Timeline from "./Timeline";
 import Register from "./Register";
+import { useCookies } from "react-cookie";
 
 function Login(props) {
   // this will act as loader
   const [loader, setloader] = useState("");
+  const [cookies, setCookie] = useCookies("");
 
-  // to switch the state to Register page
+  useEffect(() => {
+    var x = cookies.user;
+    // console.log("from cookies ", x);
+    if (x !== undefined) {
+      x = x.split("&");
+      var conf = window.confirm("Continue as : @" + x[0] + " ?")
+      // console.log(x);
+      if (conf == true) {
+        handleLogin({ username: x[0], password: x[1] });
+      }
+    }
+  }, []);
+
   const handleStateToRegister = () => {
     document.title = "Register";
     props.setinitial(<Register setinitial={props.setinitial} />);
   };
 
-  // this will handle the Login In option
+  const handleLogin = (LoginData) => {
+    // console.log(LoginData);
+    setloader(<div><br /><div className="loader small"></div></div>);
+
+    fetch("https://thegetsocial.azurewebsites.net/verify-user", {
+      method: "POST",
+      body: JSON.stringify(LoginData),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        if (result.responseMessage === "success") {
+
+          setCookie("user", LoginData.username + "&" + LoginData.password, {
+            path: "/"
+          });
+
+          props.setinitial(
+            <Timeline
+              setinitial={props.setinitial}
+              username={LoginData.username}
+              name={result.userDetails.name}
+              id={result.userDetails._id}
+            />
+
+          );
+        } else if (result.responseMessage === "failedWrongPassword") {
+          setloader("");
+          alert("Wrong password");
+          document.getElementById("password").value = "";
+        } else {
+          setloader("");
+          alert("No User Found");
+          document.getElementById("username").value = "";
+          document.getElementById("password").value = "";
+        }
+      })
+      .catch((error) => alert("Error occured : " + error));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // login data to be sent to the server
     const LoginData = {
       username: document.getElementById("username").value.trim(),
       password: document.getElementById("password").value.trim(),
-    };
-
+    }
+    // console.log("handeling submit", LoginData);
     if (LoginData.username === "" || LoginData.password === "") {
       alert("Please fill all the fields");
     } else {
-      setloader(<div><br /><div className="loader small"></div></div>);
-      fetch("https://thegetsocial.azurewebsites.net/verify-user", {
-        method: "POST",
-        body: JSON.stringify(LoginData),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-      })
-        .then((result) => result.json())
-        .then((result) => {
-          if (result.responseMessage === "success") {
-            props.setinitial(
-              <Timeline
-                setinitial={props.setinitial}
-                username={LoginData.username}
-                name={result.userDetails.name}
-                id={result.userDetails._id}
-              />
-            );
-          } else if (result.responseMessage === "failedWrongPassword") {
-            setloader("");
-            alert("Wrong password");
-            document.getElementById("password").value = "";
-          } else {
-            setloader("");
-            alert("No User Found");
-            document.getElementById("username").value = "";
-            document.getElementById("password").value = "";
-          }
-        })
-        .catch((error) => alert("Error occured : " + error));
+      handleLogin(LoginData);
     }
-  };
+  }
+
   return (
     <div className="Form">
       <h2 className="get-social">Get Social</h2>
