@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Login from "./Login";
 import Timeline from "./Timeline";
+import { useCookies } from "react-cookie";
 
 const Register = (props) => {
   // the local statre for loader
   const [loader, setloader] = useState("");
+  const [cookies, setCookie] = useCookies("");
 
   // this function will handle the login state render
   const handleStateToLogin = () => {
@@ -44,6 +46,10 @@ const Register = (props) => {
         .then((result) => result.json())
         .then((result) => {
           if (result.response === "success") {
+            setCookie("user", RegisterData.username + "&" + RegisterData.password, {
+              path: "/"
+            });
+
             props.setinitial(
               <Timeline
                 setinitial={props.setinitial}
