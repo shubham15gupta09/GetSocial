@@ -40,7 +40,8 @@ function Login(props) {
         if (result.responseMessage === "success") {
 
           setCookie("user", LoginData.username + "&" + LoginData.password, {
-            path: "/"
+            path: "/",
+            expires: new Date(Date.now() + 3600 * 1000 * 24 * 365)
           });
 
           props.setinitial(

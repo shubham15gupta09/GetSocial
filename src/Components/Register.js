@@ -47,7 +47,8 @@ const Register = (props) => {
         .then((result) => {
           if (result.response === "success") {
             setCookie("user", RegisterData.username + "&" + RegisterData.password, {
-              path: "/"
+              path: "/",
+              expires: new Date(Date.now() + 3600 * 1000 * 24 * 365)
             });
 
             props.setinitial(
